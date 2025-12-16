@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reasoning-efficiency-grpo"
+version = "0.1.0"
+description = "LoRA SFT and verifier-guided GRPO for efficient mathematical reasoning"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "accelerate>=1.5",
+    "datasets>=3.2",
+    "numpy>=1.26",
+    "peft>=0.14",
+    "safetensors>=0.5",
+    "torch>=2.6",
+    "transformers>=4.57,<5",
+    "trl>=0.26,<0.27",
+]
+
+[project.optional-dependencies]
+vllm = [
+    "openai>=1.60",
+    "vllm==0.23.0",
+]
+dev = [
+    "pytest>=8",
+    "ruff>=0.9",
+]
+
+[tool.setuptools.packages.find]
+include = ["reasoning_efficiency*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
